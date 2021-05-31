@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import tensorflow_hub as hub
 from tensorflow.keras import layers
+import datetime
 
 
 class TensorFlowHelper:
@@ -85,3 +86,19 @@ class TensorFlowHelper:
         ])
 
         return model
+
+    @staticmethod
+    def create_tensorboard_callback(dir_name, experiment_name):
+        """
+        Creates a tensorboard callback to save the model and check it out in future use or compare with other model
+        :param dir_name: Give the directory name
+        :param experiment_name: Give the model name.
+        :return: the callback directory/path where the file is saved
+        """
+
+        log_dir = dir_name + "/" + experiment_name + "/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir)
+        print(f"Saving TensorFlow log files to: {log_dir}")
+
+        return tensorboard_callback
+
