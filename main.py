@@ -18,7 +18,7 @@ class TensorFlowHelper:
     @staticmethod
     def walk_through_directories(file_name: str):
         """
-        Walk through and print all the files folders in a directory.
+        Walks through and print all the files folders in a directory.
         :param file_name: Provide the file name in String (with full path)
         """
         for dirPath, dirNames, filesNames in os.walk(file_name):
